@@ -1,0 +1,12 @@
+<%- include('partials/header') %>
+
+<section class="confirmation-card">
+  <h1>Order Confirmed</h1>
+  <p>You ordered <strong><%= order.itemName %></strong>.</p>
+  <p>Price: <strong>Nu. <%= order.price %></strong></p>
+  <p>Placed at: <%= order.placedAt.toLocaleString() %></p>
+
+  <a href="/menu" class="btn">Back to Menu</a>
+</section>
+
+<%- include('partials/footer') %>
