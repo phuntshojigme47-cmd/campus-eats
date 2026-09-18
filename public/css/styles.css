@@ -190,3 +190,68 @@ main {
   transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
 }
+.quantity-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.quantity-form input {
+  width: 60px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  text-align: center;
+  font-family: inherit;
+}
+
+.btn-secondary {
+  background: #f1f1f1;
+  color: var(--text);
+  box-shadow: none;
+}
+
+.btn-danger {
+  background: #e63946;
+  margin-top: 8px;
+}
+.stats-bar {
+  text-align: center;
+  padding: 20px;
+  background: #fff3ef;
+}
+
+.stats-bar p {
+  margin: 0;
+}
+
+.popular {
+  padding: 50px 8%;
+  text-align: center;
+}
+
+.popular h2 {
+  margin-bottom: 24px;
+}
+
+.popular-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.popular-item {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.popular-item h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}

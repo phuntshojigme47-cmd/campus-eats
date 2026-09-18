@@ -7,13 +7,21 @@
     <% menuItems.forEach(item => { %>
       <div class="menu-item">
         <h3><%= item.name %></h3>
-        <span class="price">Nu. <%= item.price %></span>
 
-        <form action="/orders" method="POST">
-          <input type="hidden" name="itemName" value="<%= item.name %>">
-          <input type="hidden" name="price" value="<%= item.price %>">
+        <span class="price">
+          Nu. <%= item.price %>
+        </span>
 
-          <button type="submit" class="btn">Order Now</button>
+        <form method="POST" action="/orders">
+          <input
+            type="hidden"
+            name="itemId"
+            value="<%= item.id %>"
+          >
+
+          <button type="submit" class="btn">
+            Order Now
+          </button>
         </form>
       </div>
     <% }); %>
