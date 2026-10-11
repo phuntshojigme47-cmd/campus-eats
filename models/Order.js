@@ -1,12 +1,22 @@
 const db = require('../config/db');
 
-exports.createOrder = (menuItemId, price) => {
+exports.createOrder = (
+  menuItemId,
+  price,
+  customerId
+) => {
   return db.tx(async (t) => {
     const order = await t.one(
-      `INSERT INTO orders (menu_item_id, quantity, price_at_order)
-       VALUES ($1, 1, $2)
+      `INSERT INTO orders
+        (
+          menu_item_id,
+          quantity,
+          price_at_order,
+          customer_id
+        )
+       VALUES ($1, 1, $2, $3)
        RETURNING *`,
-      [menuItemId, price]
+      [menuItemId, price, customerId]
     );
 
     await t.none(

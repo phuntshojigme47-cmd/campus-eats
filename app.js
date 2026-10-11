@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const dotenv = require('dotenv');
+const session = require('express-session');
 
 dotenv.config();
 
@@ -19,6 +20,16 @@ app.use(express.urlencoded({ extended: true }));
 
 // Read JSON data submitted through the API
 app.use(express.json());
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'campus-eats-dev-secret',
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
+});
 
 // Import routes
 const indexRoutes = require('./routes/index');
