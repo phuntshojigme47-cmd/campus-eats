@@ -22,7 +22,8 @@ exports.getRestaurantByOwnerId = (ownerId) => {
   return db.oneOrNone(
     `SELECT *
      FROM restaurants
-     WHERE owner_id = $1`,
+     WHERE owner_id = $1
+       AND is_active = true`,
     [ownerId]
   );
 };

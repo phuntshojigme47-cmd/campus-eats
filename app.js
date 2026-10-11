@@ -4,6 +4,11 @@ const dotenv = require('dotenv');
 const session = require('express-session');
 
 dotenv.config();
+const { connectMongo } = require('./config/mongo');
+
+connectMongo().catch((err) => {
+  console.error('MongoDB connection failed:', err);
+});
 
 const app = express();
 const PORT = process.env.PORT || 3000;

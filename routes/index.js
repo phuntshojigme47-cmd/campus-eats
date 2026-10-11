@@ -13,6 +13,8 @@ const orderController =
   require('../controllers/orderController');
 const adminController =
   require('../controllers/adminController');
+const feedbackController =
+  require('../controllers/feedbackController');
 const {
   requireAuth,
   requireAdmin,
@@ -130,5 +132,29 @@ router.post(
   '/superadmin/grant-admin',
   requireSuperAdmin,
   superAdminController.grantAdmin
+);
+
+router.get('/mongo-test', async (req, res) => {
+  try {
+    const db = await connectMongo();
+
+    const collections = await db
+      .listCollections()
+      .toArray();
+
+    res.json({
+      connected: true,
+      collections
+    });
+  } catch (error) {
+    res.status(500).json({
+      connected: false,
+      error: error.message
+    });
+  }
+});
+router.post(
+  '/restaurants/:id/feedback',
+  feedbackController.submitFeedback
 );
 module.exports = router;
